@@ -12,14 +12,16 @@ public class ObjectBehaviour : MonoBehaviour
     private float count = 1.0f;
     private float fireRate = 4.0f;
     private float nextFire = 0.0f;
+    private gameManager gameManager;
     void Start(){
         pos.y = 1;
         pos.z = 74;
         min = -7.9f;
         max = 7.9f;
+        gameManager = FindObjectOfType<gameManager>();
     }
     void FixedUpdate(){
-        if(Time.time>nextFire){
+        if(Time.time>nextFire&&!gameManager.gameOver){
             nextFire = Time.time + (fireRate/count);
             pos.x = Random.Range(min, max);
             GameObject newob = Instantiate(obstical, pos, obstical.transform.rotation);

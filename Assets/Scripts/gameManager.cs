@@ -9,19 +9,22 @@ public class gameManager : MonoBehaviour
     public bool gameOver;
     public GameObject button;
     public GameObject scoreButton;
+    public GameObject screen;
     void Start(){
         button.SetActive(false);
         scoreButton.SetActive(false);
+        screen.SetActive(false);
     }
     public void EndGame(){
         if(!gameOver){
             gameOver = true;
-            Time.timeScale = 0f;
+         //   Time.timeScale = 0f;
             button.SetActive(true);
             scoreButton.SetActive(true);
+            screen.SetActive(true);
         }
     }
     public void Restart(){
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Level");
     }
 }
